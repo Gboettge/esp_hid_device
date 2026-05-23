@@ -1,0 +1,40 @@
+
+# Python virtual environments
+venv/
+env/
+
+# VS Code
+.vscode/
+
+# Build directory (CMake/ESP-IDF)
+build/
+dist/
+
+# Configuration files (generated)
+*sdkconfig
+sdkconfig.old
+sdkconfig.ci.nimble
+
+# Clangd config
+.clangd
+.clangd/
+
+# Development containers
+.devcontainer/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor temp files
+*.swp
+*~
+*.swo
+.#*
+
+# Project specific
+# CMakeLists.txt
+# README.md
+components/
+Example.env/
+sdkconfig.defaults*
