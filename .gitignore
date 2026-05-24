@@ -38,3 +38,6 @@ Thumbs.db
 components/
 Example.env/
 sdkconfig.defaults*
+README.md
+.gitignore
+main/Kursplan Examensarbete, uppd 2025-05-21.pdf

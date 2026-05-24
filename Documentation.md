@@ -17,7 +17,8 @@ Resultatet ska vara lite likt en Nintendo Switch men fungerande trådlösa handk
 Eftersom fokus ligger på att ha kontakt och fungerande handkontroller så blir den potentiella avgränsningen själva snake spelet. Om jag inte hinner med att programmera spelet så kommer jag att ladda ner det till min Raspberry Pi så att jag iallafall kan påvisa kontakten mellan enheterna.
    
 
-# 3. Tidsplan
+# 3. Tidsplan (plannering)
+
  
 # 4. Valda metoder
 ## *Material:*
@@ -25,6 +26,9 @@ Eftersom fokus ligger på att ha kontakt och fungerande handkontroller så blir 
 3x knappar
 1x led-lampa
 1x ESP32c6
+Broadboard & sladdar för koppling av enhet
+
+
 1x Raspberry Pi
 ```
 ## Vilken kod gör vad
@@ -55,6 +59,13 @@ Programmerings språk Raspberry Pi: Python
 
 
 # 5. Hur fungerar enheten.
+Bluetooth kontrollen har tre knappar, en knapp som står för reset vid disconnect.
+Två knappar som skickar data i form at hexadecimala tal ex. 0x05 & 0x06 (som tolkas som "a" respektive "b"). En binär-ledlampa som reagerar på bluetooth connection status genom att hämta värdet via en funktionen **ble_state_t ble_hid_get_state(void);**
+
+ESP32:an är flashad med en main som inkuderar 3 "komponenter" av c & h filer som gör föjande:
+- __Button__ - Sköter logik vid knapptryck, så som att ta bort debounce mm. samt ha färdiga callback funktioner som kan kallas från ex. main. Skickar hexdecimala strängar med värde vid knapptryck samt skickar tomma strängar vid knappsläpp för att bluetooth enheten ska få rätt beteende.
+- __Binary_LED__ - ställer in ledlampas beteende via funktioner som b_led_blink & b_led_setled(b, BL_LIGHT_ON). Samt implementerar ändringar genom funktionen b_led_update.
+
 
 # 6. Arbetsprocess / Faktisk tidslinje
 
