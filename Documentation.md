@@ -18,7 +18,16 @@ Eftersom fokus ligger på att ha kontakt och fungerande handkontroller så blir 
    
 
 # 3. Tidsplan (plannering)
-
+### Vecka 1:
+- Planera för hur etableringen av uppkoppling ska gå till
+- Val av utvecklings miljö ***Arduino IDE*** eller ***Espressif IDE*** via VScode?
+- Läsa dokummentation på bluetooth uppkoppling.                      
+### Vecka 2:
+- Koppla samman all hårvara för esp32, 
+- Lyckas etablera en bluetooth kontakt
+### Vecka 3:
+- Koda ***snake spel*** 
+- Testa enheten i alla dessa states så garanterat resultat kan leveraras.
  
 # 4. Valda metoder
 ## *Material:*
@@ -67,9 +76,33 @@ ESP32:an är flashad med en main som inkuderar 3 "komponenter" av c & h filer so
 - __Binary_LED__ - ställer in ledlampas beteende via funktioner som b_led_blink & b_led_setled(b, BL_LIGHT_ON). Samt implementerar ändringar genom funktionen b_led_update.
 
 
-# 6. Arbetsprocess / Faktisk tidslinje
+# 6. Arbetsprocess
+Första halvan av projekts tiden gick år primärt att läsa både dokummentation och fakta blad via Espressif IDF (***ESP32 officiella hemsida för hur man kodar på ESP32:or (ESP-IDF)***). 
 
-# 7. Förbättrningsmöjligheter
+Då jag väl kom igång med projektet så valde jag att jobba med **vscode** och därmed **ESP-IDF**. Detta valde jag istället för att jobba med Arduiono IDE att använda mig av då jag dels har erfarenhet av den samt en tanke av att använda tidigare kodkomponenter som jag gjorde i ett tidigare kodprojekt vilket var mina .c och .h filer för ***button*** och ***binary_led***. 
+
+Detta val gav mig möjligheten att gå in helhjärtat på det jag inte gjort förut vilket var att skapa en bluetooth HID (***Human Interface Device***). 
+
+Det som satte mest käppar i hjulet för mig var då jag fick för mig att man kunde använda sig av en sk. "bluedroid pheriferal server" för att kunna etablera kontakt och kännas igen som en klassisk bluetooth.
+
+Detta sidospår kostade mig ca 4 arbetsdagar att jobba med bluetooth server, detta för att en bluetooth server kan när det är fungerande och etablerad kännas igen som en bluetooth enhet men kunde dock **inte** efterlikna en gamepad eller keyboard för live inputs.
+
+Valet att övergå till en HID enhet hade kunnat spara mig mycket tid, och jag bara hade kommit i kontakt med rätt källa eller tolkat dokummentationen bättre.
+
+### Hur jag har kodat projektet. 
+***Main.c*** egenskriven C kod med hjälpfunktioner från **Button, binary_led & bluetooth_hid.**
+
+**Binary_led & Button** egenskriven C kod från första skolåret med logik som kan köras i en minimal main med hjälp av att kalla på update funktioner i en loop.
+
+**Bluetooth_HID** Kodad i C och ***delvist "vibe-coded"*** för att fixa logik som att jag råkade försöka skicka data tillbaka till avsändaren istället för mottagaren. Detta hann jag tyvärr inte lösa helt utan hjälp av AI eftersom det gick åt så mycket tid åt snestegen med min **bluetooth pheriferal server**.
+
+### På Rasberry Pi (vscode):
+***
+
+# 7. Analys & Slutsats
+Arbetsproccessen skiljde sig mer än vad jag tänkte mig i planneringen (***3. Tidsplan (plannering***). Detta var primärt för att bl
+
+# 8. Förbättringsmöljigheter slutprodukt
 
 
 
